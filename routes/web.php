@@ -4,24 +4,17 @@ Route::get('/', 'HomeController@getHome');
 ////////////////////////////////////////
 Route::get('login', function () {
     return view('auth.login');
+});	
+Route::group(['prefix' => 'catalog'], function() {
+	/////////////////////////////////////////
+	Route::get('index', 'CatalogController@getIndex');
+	/////////////////////////////////////////
+	Route::get('show', 'CatalogController@getShow');
+	/////////////////////////////////////////
+	Route::get('create', 'CatalogController@getCreate');
+	/////////////////////////////////////////
+	Route::get('edit', 'CatalogController@getEdit');
 });
-/////////////////////////////////////////
-Route::get('index', function () {
-    return view('catalog.index');
-});
-/////////////////////////////////////////
-Route::get('show/{id}', function () {
-    return view('catalog.show', array('id'=>$id));
-});
-/////////////////////////////////////////
-Route::get('create', function () {
-    return view('catalog.create');
-});
-/////////////////////////////////////////
-Route::get('edit/{id}', function () {
-    return view('catalog.edit', array('id'=>$id));
-});
-/////////////////////////////////////////
 Route::get('master', function () {
     return view('master');
 });
